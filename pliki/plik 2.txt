@@ -1,0 +1,100 @@
+#include <stdio.h>
+
+struct lista {
+    struct lista *next;
+    struct dane osobowe;
+}
+struct dane_osobowe {
+    char imie[12];
+    char nazwisko[20];
+    unsigned int rok;
+};
+
+main()
+{
+
+
+
+
+return 0;
+}
+
+lista show (struct lista *p)
+{
+
+while (p)
+{
+printf("Imie: ");
+puts((*p)->dane_osobowe.imie);
+printf("Nazwisko: ");
+puts((*p)->dane_osobowe.nazwisko);
+printf("Rok urodzenia: ");
+puts((*p)->dane_osobowe.rok);
+p=p->next;
+}
+
+}
+
+lista add (lista **head, dane_osobowe nowe)
+{
+lista *p = new lista;
+for (int i=0; i<12;i++)
+    p->dane_osobowe.imie[i]=nowe.imie[i];
+for (int i=0; i<20;i++)
+    p->dane_osobowe.nazwisko[i]=nowe.nazwisko[i];
+p->dane_osobowe.rok=nowe.rok;
+p->next=*head;
+*head=p;
+}
+
+lista google (lista *head, unsigned int szukrok)
+{
+lista *p;
+;
+for (p=head; p!=NULL; p=p->next)
+{
+if(p->dane_osobowe.rok==szukrok)
+{
+    printf ("Znaleziono");
+    printf("Imie: ");
+    puts((*p)->dane_osobowe.imie);
+    printf("Nazwisko: ");
+    puts((*p)->dane_osobowe.nazwisko);
+    printf("Rok urodzenia: ");
+    puts((*p)->dane_osobowe.rok);
+    return 0;
+}
+}
+printf("NIE MA TAKIEGO ROKU");
+}
+
+lista add_after_search (lista *head, unsigned int szukrok, dane_osobowe nowe)
+{
+lista *p;
+;
+for (p=head; p!=NULL; p=p->next)
+{
+    if(p->dane_osobowe.rok==szukrok)
+{
+        add (&p, dane_osobowe nowe);
+}
+}
+}
+
+lista killrandperson (lista **head)
+{
+lista *p = *head;
+*head = *head->next;
+free (*p);
+}
+
+lista holocaust (lista *head)
+{
+while (p=NULL  || head=NULL )
+{
+    lista *p = (*head).next;
+    free (*head);
+    head=head->(*p).next;
+    free (*p);
+}
+}
