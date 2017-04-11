@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int tablica (int dl)
+{
+int i;
+int  *p=malloc(dl);
+for (i=0; i<dl; i++)
+    p [i]=2*i+1;
+if (!p)
+    {
+        perror("malloc");
+        return EXIT_FAILURE;
+    }
+return p;
+}
+
+
+main ()
+{
+int dlugosc, i=0;
+printf("Podaj d³ugoœæ tablicy: ");
+scanf("%i", &dlugosc);
+int *tab;
+tab=tablica(dlugosc);
+while (i<dlugosc)
+    {
+        printf("%i ", tab[i]);
+        i++;
+    }
+free(tab);
+return 0;
+}
+
+
+int add (int *tab, int n, int new_el)
+{
+int i;
+int *newtab=calloc(n+1, sizeof i);
+for(i=0; i<n;i++)
+    newtab[i]=tab[i];
+newtab [n]=new_el;
+free(tab);
+return newtab;
+}
