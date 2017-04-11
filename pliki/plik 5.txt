@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define R 100
+
+char deletefirstchar(char (*pnts)[])
+{
+int i, dl=0;
+char first=(*pnts)[0];
+for (i=0;(*pnts)[i]!='\0';i++)
+dl++;
+char *ntab;
+ntab = malloc (dl*sizeof ntab);
+for (i=0;i<dl;i++)
+ntab [i]=(*pnts)[i+1];
+free(*pnts);
+*pnts=ntab;
+return first;
+}
+
+nt palindrom (char nap [], int d)
+{
+if (b!=d-1)
+{
+    if (nap[b]==nap[d-1])
+    {
+        b++;
+        palindrom (nap, d-1);
+    }
+    else
+        return 0;
+}
+else
+    return 1;
+}
+
+main ()
+{
+int i;
+char *napis, (*wnapis)[], (**wwnapis)[];
+napis = malloc ((R+1)*sizeof napis);
+wwnapis = &wnapis;
+wnapis = &napis;
+printf ("Podaj napis: ");
+fgets (napis, R, stdin);
+for (i=0;(*wnapis)[i]!='\0';i++)
+printf ("%c ", (*wnapis)[i]);
+deletefirstchar (wwnapis);
+for (i=0;napis[i]!='\0';i++)
+printf ("%c ", (*wnapis)[i]);
+return 0;
+}
+
