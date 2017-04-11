@@ -1,0 +1,26 @@
+program Rownanie(Input,Output);
+var
+  a,b,c,
+  delta : Real;
+begin
+  Write('Podaj wspolczynniki rownania');
+  Writeln(' oddzielone pojedynczym odstepem:');
+  Readln(a,b,c);
+ 
+  if a = 0 then
+    if b = 0 then
+      if c = 0 then
+        Writeln('Rownanie nieoznaczone.')
+      else Writeln('Rownanie nie ma rozwiazania.')
+    else Writeln('Rownanie ma jedno rozwiazanie: ',
+                  -c/b)
+  else
+  begin
+    delta := b*b - 4*a*c;
+    if delta < 0 then
+      Writeln('Rownanie nie ma rozwiazania.')
+    else
+      Writeln('x1 = ',(-b+Sqrt(delta))/(2*a),
+              ' x2 = ',(-b-Sqrt(delta))/(2*a)
+  end
+end.
