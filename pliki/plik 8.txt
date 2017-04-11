@@ -1,0 +1,28 @@
+#include <iostream.h> // 
+#include <iomanip.h>
+#include <conio.h>
+main()
+{
+ float x, y, suma, roznica, iloczyn, iloraz;
+ cout << "Program oblicza sume, roznice, iloczyn i iloraz" << endl;
+ cout << "dla dwoch liczb x i y wprowadzanych z klawiatury." << endl;
+ cout << endl;
+ cout << "Podaj x." << endl;
+ cin >> x;
+ cout << "Podaj y." << endl;
+ cin >> y;
+ suma = x+y;
+ roznica = x-y;
+ iloczyn = x*y;
+ iloraz = x/y;
+ cout << fixed;
+ cout << setprecision (2);
+ cout << "Dla x = " << x << " i y = " << y << endl;
+ cout << endl; // wydruk pustej linii
+ cout << "suma = " << suma << "," << endl;
+ cout << "roznica = " << roznica << "," << endl;
+ cout << "iloczyn = " << iloczyn << "," << endl;
+ cout << "iloraz = " << iloraz << ".";
+ getch(); // czeka na nacisniecie dowolnego klawisza
+return 0;
+}
