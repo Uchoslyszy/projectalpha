@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <math.h>
+ 
+main()
+{
+  double  a, b, c,
+          delta;
+ 
+  printf(" Podaj wspolczynniki a, b, c < ");
+  scanf("%lf %lf %lf", &a, &b, &c);
+ 
+  if ( a == 0 )
+    if ( b == 0 )
+      if ( c == 0)
+        printf(" Rownanie nieoznaczone.\n ");
+      else
+        printf(" Rownanie nie ma rozwiazania.\n");
+    else{
+      printf(" Rownanie ma jedno");
+      printf(" rozwiazanie: %.2f\n ", -c/b);
+    }
+  else{
+    delta = b*b - 4*a*c;
+    if ( delta < 0 )
+      printf(" Rownanie nie ma rozwiazania.\n ");
+    else{
+      printf(" Rownanie ma dwa rozwiazania:\n ");
+      printf("x1 = %.2f, x2 = %.2f",
+             (-b-sqrt(delta))/(2*a),(-b+sqrt(delta))/(2*a));
+    }
+  }
+euklides (a,b_ 
+  return 0;
+}
+
+int euklides (unsigned int m, unsigned int n)
+{
+ 
+  
+  printf("NWD(%d,%d) = ", m, n);
+ 
+  while ( n != m)
+    if ( n > m)
+      n = n - m;
+    else
+      m = m - n;
+   printf("%d\n", m);
+   return 0;
+}
