@@ -1,0 +1,75 @@
+include <stdio.h>
+#include <stdlib.h>
+
+main ()
+{
+int n;
+int **tab1,**tab2;
+printf ("Podaj rozmiar macierzy: ");
+scanf("%i", &n);
+tab1=createMatrix(n);
+fillMatrix(tab1,n);
+copyMatrix(&tab2,tab1,n);
+showmatrix(tab2,n);
+free(tab1);
+free(tab2);
+return 0;
+}
+
+int showmatrix(int **tab,int n)
+{
+int i,t;
+for (i=0;i<n;i++)
+    for (t=0;t<n;t++)
+        printf("%i", tab[i][t]);
+}
+//drukuje macierz, mo¿na szybko wykorzystaæ do sprawdzania kodu na ró¿nych etapach.
+
+int** createMatrix(int n)
+{
+int i;
+int** matpointer=calloc(n, sizeof(int *));
+if(matpointer==NULL) return NULL;
+for(i=0;i<n;i++) {
+    matpointer[i]=calloc(n,sizeof(int));
+    if(matpointer[i]==NULL)
+        deleteMatrix(&matpointer,i);
+return matpointer;
+}
+//która tworzy macierz o wymiarze nxn. Fukcja zwraca utworzon¹ tablicê.
+//W funkcji ka¿dy wiersz ma byæ alokowany osobno. W funkcji nale¿y u¿yæ funkcji deleteMatrix().
+
+void fillMatrix(int** tab, int n)
+{
+int i, t,m;
+m=1;
+for (i=0;i<n;i++)
+    for (t=0;t<n;t++)
+        {
+        tab[i][t]=m;
+        m++;
+        };
+}
+//która otrzymuje macierz tab o wymiarze ''nxn'', a nastêpnie wype³nia j¹ kolejnymi liczbami naturalnymi pocz¹wszy od 1.
+
+void copyMatrix(int*** pdest, int** src, int n)
+{
+int **dest;
+dest=createMatrix(n);
+int i, t;
+for (i=0;i<n;i++)
+    for (t=0;t<n;t++)
+        dest[i][t]=src[i][t];
+pdest=&dest;
+}
+//która tworzy tablicê 'dest ', kopiuje do niej zawartoœæ tablicy ''src'' i "wrzuca" "dest" pod przekazany adres. Obie tablice s¹ wymiaru ''nxn''.
+//W funkcji nale¿y u¿yæ funkcji CreateMatrix().
+
+void deleteMatrix(int*** ptab, int n)
+{
+int i;
+for(i=0;i<n;i++)
+    free((*ptab)[i]);
+free(*ptab);
+*ptab=NULL;
+}
