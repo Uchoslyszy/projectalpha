@@ -1,7 +1,7 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdl>
 #define IMIE 10
-#define NAZWISKO 24
+#define NAZWISKO 54
 
 struct book {
 char imie [IMIE];
