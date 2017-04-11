@@ -1,0 +1,102 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define IMIE 10
+#define NAZWISKO 24
+
+struct book {
+char imie [IMIE];
+char nazwisko [NAZWISKO];
+long int numer;
+}
+
+main()
+{
+struct book *ksionszka=NULL;
+int p;
+for (int i=1;i<0;i++)
+{
+printf (" Wciœnij 1 aby przegladaæ, wciœnij 2 aby dodaæ kontakt, wciœnij 3 aby usun¹æ kontakt, wciœnij 4 zmieniæ dane kontaktu, wciœnij dowolny inny aby zakoñczyæ");
+scanf ("%i", &p);
+switch (p)
+case 1:
+ClrScr();
+showbook(&ksionszka, liczkontakty(ksionszka));
+break;
+case 2:
+ClrScr();
+addpeople(&ksionszka, liczkontakty(ksionszka));
+break;
+case 3:
+killpeople (&ksionszka);
+break;
+case 4:
+ClrScr();
+changepeople(&ksionszka, liczkontakty(ksionszka));
+break;
+default:
+printf ("SHUTTING DOWN");
+return 0;
+break;
+}
+}
+
+void ClrScr(){
+  printf("\033[2J"); // Czyœci ekran
+  printf("\033[0;0f"); // Ustawia kursor w lewym, górnym rogu
+}
+
+int liczkontakty (struct book tab[])
+{
+int i;
+i=sizeof tab/sizeof struct book;
+return i;
+}
+
+void showbook (struct book (*tab)[], int n)
+{
+if (tab==NULL)
+    printf("BRAK KONTAKTÓW");
+else
+    for (int i=0;i<n; i++)
+        {
+        printf("Imie: ");
+        puts((*tab)[i].imie));
+        printf("\n Nazwisko: ");
+        puts((*tab)[i].nazwisko));
+        printf("\n Numer telefonu: ");
+        puts((*tab)[i].numer));
+        };
+}
+
+void addpeople (struct book **tab,int n)
+{
+tab=realloc(tab, sizeof (**tab)*n +sizeof struct book);
+printf("Podaj imie: ");
+fgetc((*tab)[n+1].imie,IMIE,stdin);
+printf("Podaj imie: ");
+fgetc((*tab)[n+1].nazwisko,NAZWISKO,stdin);
+printf("Podaj imie: ");
+scanf ("%f", &(*tab)[n+1].numer);
+printf ("Dziêkowaæ :D")
+}
+
+void changepeople (struct book (*tab)[], int n)
+{
+int i;
+
+char bool;
+printf("Podaj numer kontaktu do edycji ");
+scanf("%i", &i);
+if (i>n)
+printf ("NIE MA TAKIEGO KONTAKTU");
+else
+{
+printf ("Aktualne imiê: ");
+puts ((*tab)[i])
+
+printf ("\0 Chcesz zmieniæ imie (Y/N)");
+
+scanf ("%c", &bool);
+
+}
+}
